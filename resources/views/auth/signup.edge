@@ -1,0 +1,50 @@
+@layout('layouts.main')
+@section('title')
+  JobPostr - Join Now
+@endsection
+@section('extracss')
+{{ style('form') }}
+@endsection
+@section('content')
+  <h1>Sign Up Now</h1>
+
+  <div class="job-container">
+
+    <form method="POST" action="{{ route('UserController.create') }}">
+
+      {{ csrfField() }}
+
+      <div>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" value="{{ old('username', '') }}" />
+        @if(hasErrorFor('username'))
+          <span>
+           {{ getErrorFor('username') }}
+          </span>
+        @endif
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" value="{{ old('email', '') }}" />
+        @if(hasErrorFor('email'))
+          <span>
+            {{ getErrorFor('email') }}
+          </span>
+        @endif
+      </div>
+
+      <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password"/>
+        @if(hasErrorFor('password'))
+          <span>
+            {{ getErrorFor('password') }}
+          </span>
+        @endif
+      </div>
+
+      <button type="submit">Join Now</button>
+    </form>
+
+  </div>
+@endsection
