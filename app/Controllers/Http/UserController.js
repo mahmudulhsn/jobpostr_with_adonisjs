@@ -13,7 +13,7 @@ class UserController {
     return response.redirect('/');
   }
 
-  async login({ request, view, response, auth }){
+  async login({ request, view, response, auth, session }){
     const {email, password} = request.all();
     try {
       await auth.attempt(email, password );
